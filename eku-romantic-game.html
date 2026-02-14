@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>For My Eku 💖</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+    background: linear-gradient(-45deg, #ff6a88, #ff99ac, #ff758c, #ff7eb3);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+.container {
+    margin-top: 80px;
+    position: relative;
+    z-index: 2;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    background: white;
+    color: #ff4e8a;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #ffe6f0;
+    transform: scale(1.05);
+}
+
+.hidden {
+    display: none;
+}
+
+/* Floating Hearts */
+.heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: red;
+    transform: rotate(45deg);
+    animation: float 6s linear infinite;
+}
+
+.heart:before,
+.heart:after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: red;
+    border-radius: 50%;
+}
+
+.heart:before {
+    top: -10px;
+    left: 0;
+}
+
+.heart:after {
+    left: -10px;
+    top: 0;
+}
+
+@keyframes float {
+    0% { bottom: -10%; opacity: 1; }
+    100% { bottom: 110%; opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Background Music -->
+<audio id="bgMusic" autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+</audio>
+
+<div class="container">
+
+<h1>💖 A Special Game For Someone Special 💖</h1>
+
+<div id="level1">
+    <h2>Level 1</h2>
+    <p>Sabse fast kya hai?</p>
+    <button onclick="next(1,false)">Light</button>
+    <button onclick="next(1,true)">Thoughts</button>
+    <button onclick="next(1,false)">Train</button>
+</div>
+
+<div id="level2" class="hidden">
+    <h2>Level 2</h2>
+    <p>Wo kya hai jo toot jaye to awaaz nahi karta?</p>
+    <button onclick="next(2,true)">Dil</button>
+    <button onclick="next(2,false)">Glass</button>
+    <button onclick="next(2,false)">Cup</button>
+</div>
+
+<div id="level3" class="hidden">
+    <h2>Level 3</h2>
+    <p>Jab special insaan smile kare to kya hota hai?</p>
+    <button onclick="next(3,false)">Kuch nahi</button>
+    <button onclick="next(3,true)">Din bright ho jata hai</button>
+    <button onclick="next(3,false)">Bijli chali jati hai</button>
+</div>
+
+<div id="level4" class="hidden">
+    <h2>Level 4</h2>
+    <p>Friendship ka sabse important part?</p>
+    <button onclick="next(4,true)">Trust</button>
+    <button onclick="next(4,false)">Ego</button>
+    <button onclick="next(4,false)">Paisa</button>
+</div>
+
+<div id="level5" class="hidden">
+    <h2>Level 5</h2>
+    <p>Meri life mein ek ladki hai jo...</p>
+    <button onclick="next(5,true)">Mujhe asani se khush kar deti hai</button>
+    <button onclick="next(5,false)">Mujhe ignore karti hai</button>
+    <button onclick="next(5,false)">Mujhe daant ti rehti hai</button>
+</div>
+
+<div id="level6" class="hidden">
+    <h2>Final Level 😌</h2>
+    <p>Wo special ladki ka naam?</p>
+    <button onclick="finalMsg(true)">Deepika (Eku)</button>
+    <button onclick="finalMsg(false)">Secret</button>
+    <button onclick="finalMsg(false)">Koi aur</button>
+</div>
+
+<div id="final" class="hidden">
+    <h1>💘 Happy Valentine's Day Eku 💘</h1>
+    <p>
+        Teri smile mere liye magic hai ✨  
+        Tu meri life ka special part hai 💖  
+        Chahe duniya boring ho jaye,  
+        tum ho to sab interesting lagta hai 😌  
+        Thank you for being in my life ❤️
+    </p>
+</div>
+
+</div>
+
+<script>
+function next(level, correct){
+    if(correct){
+        document.getElementById("level"+level).classList.add("hidden");
+        document.getElementById("level"+(level+1)).classList.remove("hidden");
+    } else {
+        alert("Oops 😜 Dobara try karo!");
+    }
+}
+
+function finalMsg(correct){
+    if(correct){
+        document.getElementById("level6").classList.add("hidden");
+        document.getElementById("final").classList.remove("hidden");
+    } else {
+        alert("Soch ke jawab do 😄");
+    }
+}
+
+/* Generate floating hearts */
+setInterval(function(){
+    var heart = document.createElement("div");
+    heart.className = "heart";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(function(){
+        heart.remove();
+    },6000);
+},500);
+</script>
+
+</body>
+</html>
